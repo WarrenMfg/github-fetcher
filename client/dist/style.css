@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.Repo {
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: 0 0 5px black;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "imgAndLink data";
+  width: 600px;
+}
+
+.Repo-imgAndLink {
+  grid-area: imgAndLink;
+  padding: 40px 0;
+}
+
+.Repo-imgAndLink img {
+  display: block;
+  width: 250px;
+  height: auto;
+  margin: 0 auto 20px;
+  /* padding: 20px; */
+  border-radius: 50%;
+  grid-area: img;
+}
+
+.Repo-imgAndLink a {
+  display: inline-block;
+  grid-area: link;
+
+}
+
+.Repo-data {
+  grid-area: data;
+  text-align: left;
+}
+
+.Repo-data p span {
+  font-weight: bold;
+}

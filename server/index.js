@@ -22,8 +22,7 @@ app.post('/repos', function (req, res) {
   // save the repo information in the database
   let username = req.body.username;
 
-  getReposByUsername(username)
-    // .then(repos => repos.slice(0, 25))
+  getReposByUsername(username) // get GitHub API results
     .then(repos => {
       repos = repos.slice(0, 25);
       let mappedRepos = repos.map(obj => {
@@ -36,18 +35,21 @@ app.post('/repos', function (req, res) {
         repo.avatar_url = obj.owner.avatar_url;
         repo.html_url = obj.html_url;
 
-        return repo.save((err) => {
+        return repo.save((err, repo) => { // add GitHub API results
           if (err) {
-            console.log('error saving repo to db', err);
+            if (err.name === 'MongoError' && err.code === 11000) {
+              console.log('dublicate entry not added:', repo); // I don't believe I need to let the user know, because the client will always dislay the top 25 without duplicates
+            } else {
+              console.log('error saving repo to db', err);
+            }
           }
         });
       });
 
       return Promise.all(mappedRepos);
-
     })
-    .then(() => Repo.find({}).sort({stargazers_count: -1}).limit(25)) // deal with duplicates
-    .then(top25 => res.send(top25))
+    .then(() => Repo.find({}).sort({stargazers_count: -1}).limit(25))
+    .then(repos => res.send(repos))
     .catch(err => console.log('error at getReposByUserName in app.post', err));
 });
 
@@ -55,7 +57,9 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  console.log(req.body);
+  Repo.find({}).sort({stargazers_count: -1}).limit(25)
+    .then(repos => res.send(repos))
+    .catch(err => console.log('error at getReposByUserName in app.post', err));
 
 
 

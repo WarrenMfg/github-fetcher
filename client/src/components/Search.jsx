@@ -24,9 +24,8 @@ class Search extends React.Component {
     return (
     <div>
       <h4>Add more repos!</h4>
-      Enter a github username: <input value={this.state.term} onChange={this.onChange}/>
-      <button onClick={this.search}> Add Repos </button>
-      {/* top 25 most recently pushed repos sorted by stargazer count */}
+      Enter a GitHub username: <input value={this.state.term} onChange={this.onChange}/>
+      <button onClick={this.search}>Add Repos</button>
     </div>);
   }
 }

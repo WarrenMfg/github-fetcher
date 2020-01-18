@@ -9,7 +9,7 @@ db.once('open', function() {
 
 const repoSchema = new mongoose.Schema({
   // TODO: your schema here!
-  repoId: Number, // repo id will be used to avoid duplicate repos
+  repoId: {type: Number, unique: true}, // repo id will be used to avoid duplicate repos
   name: String,
   pushed_at: String,
   stargazers_count: Number,
@@ -25,11 +25,7 @@ let save = (err) => {
   // This function should save a repo or repos to
   // the MongoDB
 
-  console.log('error saving', err);
-  // invoke callback to calculate top 25?
+  // seems redundant when mongoose's quick start guide exemplifies its own .save method
 }
 
-// Repo.save = save;
-
-// module.exports.save = save;
 module.exports = Repo;

@@ -9,24 +9,47 @@ class App extends React.Component {
     super(props);
     this.state = {
       repos: []
-    }
+    };
+    this.addReposToState = this.addReposToState.bind(this);
   }
 
   componentDidMount() {
-    // fetch top 25 repos and render
+    $.ajax({
+      url: 'http://127.0.0.1:1128/repos',
+      success: this.addReposToState,
+      error: function(err) {
+        console.log('error at index.jsx search ajax', err);
+      }
+    });
   }
 
-  search (term) {
-    console.log(`${term} was searched`);
+  search (username) {
+    console.log(`${username} was searched`);
     // TODO
+    $.ajax({
+      method: 'POST',
+      url: 'http://127.0.0.1:1128/repos',
+      data: JSON.stringify({username: username}),
+      contentType: 'application/json',
+      success: this.addReposToState,
+      error: function(err) {
+        console.log('error at index.jsx search ajax', err);
+      }
+    });
+  }
+
+  addReposToState(data) {
+    this.setState({repos: data})
   }
 
   render () {
-    return (<div>
-      <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
-    </div>)
+    return (
+      <div className="App">
+        <h1>GitHub Fetcher</h1>
+        <Search onSearch={this.search.bind(this)}/>
+        <RepoList repos={this.state.repos}/>
+      </div>
+    );
   }
 }
 
