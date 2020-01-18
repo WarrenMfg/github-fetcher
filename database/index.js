@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher', {useNewUrlParser: true, useUnifiedTopology: true}); // name of database
+
+mongoose.connect('mongodb://heroku_2bql46bb:og83p6gn5lg40p0dlesv9eb8jp@ds253537.mlab.com:53537/heroku_2bql46bb/fetcher', {useNewUrlParser: true, useUnifiedTopology: true}); // name of database: mongodb://localhost/fetcher
 
 const db = mongoose.connection;
 db.on('error', (err) => console.log('error at db.on()', err));
