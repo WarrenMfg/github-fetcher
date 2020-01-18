@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(`${MONGODB_URI}/fetcher`, {useNewUrlParser: true, useUnifiedTopology: true}); // name of database: mongodb://localhost/fetcher
+mongoose.connect(`${process.env.MONGODB_URI}`, {useNewUrlParser: true, useUnifiedTopology: true}); // name of database: mongodb://localhost/fetcher
 
 const db = mongoose.connection;
 db.on('error', (err) => console.log('error at db.on()', err));
