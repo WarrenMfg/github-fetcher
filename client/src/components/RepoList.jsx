@@ -9,7 +9,7 @@ class RepoList extends React.Component {
   render() {
     return (
       <div className="RepoList">
-        <h4>Top 25 most recently pushed repos sorted by stargazer count</h4>
+        <h3>Top 25 most recently pushed repos sorted by stargazer count</h3>
         {this.props.repos.map(repo => <Repo repo={repo} key={repo.repoId}/>)}
       </div>
 

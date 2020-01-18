@@ -20,12 +20,16 @@ const repoSchema = new mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (err) => {
+let save = (repo) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
+  // seems redundant when mongoose's quick start guide exemplifies its own .save method --> nevermind, Cody explained
 
-  // seems redundant when mongoose's quick start guide exemplifies its own .save method
-}
+  // repo.save((err, repo) => {
+
+  // });
+
+};
 
 module.exports = Repo;

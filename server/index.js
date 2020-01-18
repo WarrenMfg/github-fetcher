@@ -48,7 +48,7 @@ app.post('/repos', function (req, res) {
 
       return Promise.all(mappedRepos);
     })
-    .then(() => Repo.find({}).sort({stargazers_count: -1}).limit(25))
+    .then(() => Repo.find({}).sort({stargazers_count: -1}).limit(25)) // get top 25
     .then(repos => res.send(repos))
     .catch(err => console.log('error at getReposByUserName in app.post', err));
 });
@@ -57,24 +57,13 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  Repo.find({}).sort({stargazers_count: -1}).limit(25)
+  Repo.find({}).sort({stargazers_count: -1}).limit(25) // get top 25
     .then(repos => res.send(repos))
     .catch(err => console.log('error at getReposByUserName in app.post', err));
-
-
-
 });
 
 
-
-
-
-
-
-
-
-let port = 1128;
-
+let port = process.env.PORT || 1128;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });

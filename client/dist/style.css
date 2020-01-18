@@ -5,15 +5,66 @@ body {
   margin: 0;
 }
 
+.App h1 {
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding-top: 30px;
+}
+
+.Search {
+  padding: 10px 0 30px;
+  background-color: black;
+  color: white;
+}
+
+.Search div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Search input {
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.Search button {
+  height: 28px;
+  width: 84px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.Search button:hover {
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 .Repo {
   margin: 20px auto;
+  padding: 0 20px;
   border-radius: 20px;
   box-shadow: 0 0 5px black;
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   grid-template-areas: "imgAndLink data";
   width: 600px;
+  transition: all 0.2s ease;
+}
+
+.Repo:hover {
+  box-shadow: 0 0 15px black;
 }
 
 .Repo-imgAndLink {
@@ -31,15 +82,29 @@ body {
   grid-area: img;
 }
 
-.Repo-imgAndLink a {
+.Repo-imgAndLink a:link, .Repo-imgAndLink a:visited {
   display: inline-block;
   grid-area: link;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
 
+.Repo-imgAndLink a:hover {
+  text-decoration: underline;
+}
+
+.Repo-imgAndLink a:active {
+  text-decoration: none;
 }
 
 .Repo-data {
   grid-area: data;
   text-align: left;
+}
+
+.Repo-data p {
+  word-break: break-all;
 }
 
 .Repo-data p span {
