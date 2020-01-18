@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/repos',
+      url: 'https://damp-beach-94644.herokuapp.com/repos',
       success: this.addReposToState,
       error: function(err) {
         console.log('error at index.jsx search ajax', err);
@@ -28,7 +28,7 @@ class App extends React.Component {
     // TODO
     $.ajax({
       method: 'POST',
-      url: '/repos',
+      url: 'https://damp-beach-94644.herokuapp.com/repos',
       data: JSON.stringify({username: username}),
       contentType: 'application/json',
       success: this.addReposToState,
