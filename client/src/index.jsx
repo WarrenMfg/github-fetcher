@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: 'http://127.0.0.1:1128/repos',
+      url: '/repos',
       success: this.addReposToState,
       error: function(err) {
         console.log('error at index.jsx search ajax', err);
@@ -28,7 +28,7 @@ class App extends React.Component {
     // TODO
     $.ajax({
       method: 'POST',
-      url: 'http://127.0.0.1:1128/repos',
+      url: '/repos',
       data: JSON.stringify({username: username}),
       contentType: 'application/json',
       success: this.addReposToState,
