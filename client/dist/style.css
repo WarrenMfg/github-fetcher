@@ -50,6 +50,21 @@ body {
   cursor: pointer;
 }
 
+
+/* ANIMATIONS */
+.slideIn-enter {
+  transform: translate(-300%, 0);
+  background-color: black;
+}
+
+.slideIn-enter.slideIn-enter-active {
+  transform: translate(0, 0);
+  background-color: white;
+  transition: all 500ms ease;
+}
+/* ANIMATIONS */
+
+
 .Repo {
   margin: 20px auto;
   padding: 0 20px;
