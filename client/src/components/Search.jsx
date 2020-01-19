@@ -23,7 +23,7 @@ class Search extends React.Component {
   }
 
   handleKeyUp(e) {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       this.props.onSearch(this.state.term);
       this.setState({term: ''});
     }
