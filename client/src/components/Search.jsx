@@ -8,7 +8,7 @@ class Search extends React.Component {
     }
     this.onChange = this.onChange.bind(this);
     this.search = this.search.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
   onChange (e) {
@@ -22,7 +22,7 @@ class Search extends React.Component {
     this.setState({term: ''});
   }
 
-  handleKeyDown(e) {
+  handleKeyUp(e) {
     if (e.keyCode === 13) {
       this.props.onSearch(this.state.term);
       this.setState({term: ''});
@@ -34,7 +34,7 @@ class Search extends React.Component {
     <div className="Search">
       <h2>Add more repos!</h2>
       <div>Enter a GitHub username:
-        <input value={this.state.term} onChange={this.onChange} onKeyDown={this.handleKeyDown}/>
+        <input value={this.state.term} onChange={this.onChange} onKeyUp={this.handleKeyUp}/>
         <button onClick={this.search}>Add Repos</button>
       </div>
     </div>);
