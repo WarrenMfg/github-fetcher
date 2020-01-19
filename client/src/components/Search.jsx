@@ -24,7 +24,6 @@ class Search extends React.Component {
 
   handleKeyPress(e) {
     let enter = (e.keyCode ? e.keyCode : e.which);
-    console.log(event)
     if (enter === 13 || e.key === 'Enter') {
       this.props.onSearch(this.state.term);
       this.setState({term: ''});
