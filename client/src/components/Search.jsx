@@ -8,6 +8,7 @@ class Search extends React.Component {
     }
     this.onChange = this.onChange.bind(this);
     this.search = this.search.bind(this);
+    this.delete = this.delete.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -19,6 +20,11 @@ class Search extends React.Component {
 
   search() {
     this.props.onSearch(this.state.term);
+    this.setState({term: ''});
+  }
+
+  delete() {
+    this.props.onDelete();
     this.setState({term: ''});
   }
 
@@ -38,6 +44,7 @@ class Search extends React.Component {
       <div>Enter a GitHub username:
         <input value={this.state.term} onChange={this.onChange} onKeyPress={this.handleKeyPress}/>
         <button onClick={this.search}>Add Repos</button>
+        <button onClick={this.delete}>Delete All</button>
       </div>
     </div>);
   }

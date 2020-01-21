@@ -23,7 +23,7 @@ class App extends React.Component {
     });
   }
 
-  search (username) {
+  search(username) {
     console.log(`${username} was searched`);
     // TODO
     $.ajax({
@@ -31,7 +31,7 @@ class App extends React.Component {
       url: '/repos',
       data: JSON.stringify({username: username}),
       contentType: 'application/json',
-      success: this.addReposToState,
+      success: this.addReposToState.bind(this),
       error: function(err) {
         console.log('error at index.jsx search ajax', err);
       }
@@ -42,11 +42,28 @@ class App extends React.Component {
     this.setState({repos: data})
   }
 
+  delete(username) {
+    // TODO
+    $.ajax({
+      method: 'DELETE',
+      url: '/repos',
+      contentType: 'application/json',
+      success: this.deleteReposFromState.bind(this),
+      error: function(err) {
+        console.log('error at index.jsx delete ajax', err);
+      }
+    });
+  }
+
+  deleteReposFromState() {
+    this.setState({repos: []});
+  }
+
   render () {
     return (
       <div className="App">
         <h1>GitHub Fetcher</h1>
-        <Search onSearch={this.search.bind(this)}/>
+        <Search onSearch={this.search.bind(this)} onDelete={this.delete.bind(this)} />
         <RepoList repos={this.state.repos}/>
       </div>
     );

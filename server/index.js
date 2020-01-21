@@ -54,12 +54,18 @@ app.post('/repos', function (req, res) {
 });
 
 
-app.get('/repos', function (req, res) {
+app.get('/repos', function(req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
   Repo.find({}).sort({stargazers_count: -1}).limit(25) // get top 25
     .then(repos => res.send(repos))
     .catch(err => console.log('error at getReposByUserName in app.post', err));
+});
+
+app.delete('/repos', function(req, res) {
+  Repo.deleteMany({})
+    .then(status => res.send(status))
+    .catch(err => console.log('error at app.delete in server/index.js', err));
 });
 
 
