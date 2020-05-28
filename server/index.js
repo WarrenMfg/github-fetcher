@@ -9,7 +9,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static('client/dist'));
 
 
 Promise.promisifyAll(mongoose);
