@@ -20,7 +20,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "body-parser": "^1.17.0",
-    "express": "^4.15.0",
+    "express": "^4.17.3",
     "jquery": "^3.1.1",
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",
